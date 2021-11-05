@@ -6,6 +6,7 @@ import Context from "./Context";
 
 const Provider = ({ children }) => {
   const [products, setProducts] = useState({});
+  const [requested, setRequested] = useState(false)
 
   const storeList = {
     "mercado-livre": 1,
@@ -29,7 +30,9 @@ const Provider = ({ children }) => {
     requestSearch,
     fetchMl,
     products,
-    setProducts
+    setProducts,
+    requested,
+    setRequested
   }
 
   return(

@@ -33,7 +33,7 @@ const getMercadoLivreProdutcs = async(categoryId, description) => {
 					description: $(this).find('.ui-search-item__title').text().trim(),
 					price: Number(price_decimal.replace(".", "")),
 					link: $(this).find('a').attr("href"),
-					picture: $(this).find('.ui-search-result__image').find('img').attr('src')
+					image: $(this).find('.ui-search-result__image').find('img').attr('src')
 				};
 				results.push(result);
 			});
@@ -42,6 +42,7 @@ const getMercadoLivreProdutcs = async(categoryId, description) => {
 }
 
 const getBuscapeProdutcs = async(categoryId, description) => {
+  console.log(categoryMenu[categoryId] + " " + description)
   let results = [];
   return axios.get(`https://www.buscape.com.br/search?q=${categoryMenu[categoryId] + " " + description}`)
 		.then((response) => {
@@ -49,13 +50,16 @@ const getBuscapeProdutcs = async(categoryId, description) => {
 			const $ = cheerio.load(html);
       const list = $('.Hits_SearchResultList__3ymoq')
       $('.Cell_Cell__1YAxR').each((i, elem) => {
+        const priceString = $(elem).find(".CellPrice_MainValue__3s0iP").text().trim()
+        const intValue = (priceString).replace("R$ ", "").replace("\.", "").slice(0,-3)
+        const cents = priceString.substr(-2)
 				let result = {
           storeId: 2,
           categoryId,
 					description: $(elem).find('.Cell_Name__jnsS-').text().trim(),
-					price: $(elem).find(".CellPrice_MainValue__3s0iP").text().trim(),
+					price: Number(intValue + "." + cents),
 					link: "https://www.buscape.com.br" + $(elem).find('a').attr("href"),
-					picture: $(elem).find('.Cell_Image__2-Jrs').attr("src")
+					image: $(elem).find('.Cell_Image__2-Jrs').attr("src")
 				};
 				results.push(result);
 			});

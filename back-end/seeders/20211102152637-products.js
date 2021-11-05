@@ -5,7 +5,7 @@ module.exports = {
     {
       description: "Produto",
       price: 999.99,
-      picture: "link da foto",
+      image: "link da foto",
       link: "lindo post",
       storeId: 1,
       categoryId: 1,

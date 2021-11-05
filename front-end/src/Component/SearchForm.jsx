@@ -22,9 +22,9 @@ const SearchForm = () => {
 
   const handleSearch = () => {
     requestSearch({
-      site: searchProperts.web,
+      store: searchProperts.web,
       category: searchProperts.category,
-      term: searchTerm,
+      description: searchTerm,
     })
   }
 
@@ -57,9 +57,9 @@ const SearchForm = () => {
         <MenuItem value="">
           Categorías
         </MenuItem>
+        <MenuItem value={"celular"}>Celular</MenuItem>
         <MenuItem value={"geladeira"}>Geladeira</MenuItem>
         <MenuItem value={"tv"}>TV</MenuItem>
-        <MenuItem value={"celular"}>Celular</MenuItem>
       </Select>
       <TextField 
         placeholder="Digite sua busca..."

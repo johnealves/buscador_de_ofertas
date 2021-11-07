@@ -43,7 +43,7 @@ const SearchForm = () => {
 
   return(
     <div  className="search-container">
-      <h1>{ logo } LERAXT</h1>
+      <h1>{ logo } LEXART</h1>
       <Box sx={{ '.MuiOutlinedInput-root': { m: 1, width: '20ch' }, }}>
         <Select
           value={ searchProperts.web }

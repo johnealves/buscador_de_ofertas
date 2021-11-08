@@ -1,7 +1,5 @@
-import { CodeSharp } from "@material-ui/icons";
-import axios from "axios";
-import react, { useState } from "react";
-import { fetchAll, fetchBuscape, fetchMl, fetchProducts } from "../Services/api";
+import React, { useState } from "react";
+import { fetchMl, fetchProducts } from "../Services/api";
 import Context from "./Context";
 
 const Provider = ({ children }) => {
